@@ -82,7 +82,7 @@ router.patch("/users/me", auth, async (req, res) => {
     return allowedUpdates.includes(update);
   });
 
-  if (!isValidOperation) res.status(400).send("Invalid Updates!");
+  if (!isValidOperation) return res.status(400).send("Invalid Updates!");
 
   try {
     updates.forEach(update => (user[update] = body[update]));
